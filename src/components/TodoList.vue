@@ -8,7 +8,7 @@
       >Archive Completed</button>
     </div>
     <br>
-    <form>
+    <form @submit.prevent>
       <input
         type="text"
         size="30"
