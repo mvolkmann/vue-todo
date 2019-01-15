@@ -43,7 +43,7 @@ export default {
   components: {Todo},
   computed: {
     uncompletedCount() {
-      return this.$data.todos.filter(t => !t.done).length;
+      return this.todos.filter(t => !t.done).length;
     }
   },
   data() {
@@ -54,27 +54,25 @@ export default {
   },
   methods: {
     onAddTodo() {
-      this.$data.todos = this.$data.todos.concat(
-        createTodo(this.$data.todoText)
-      );
-      this.$data.todoText = '';
+      this.todos = this.todos.concat(createTodo(this.todoText));
+      this.todoText = '';
     },
 
     onArchiveCompleted() {
-      this.$data.todos = this.$data.todos.filter(t => !t.done);
+      this.todos = this.todos.filter(t => !t.done);
     },
 
     onDeleteTodo(todoId) {
-      this.$data.todos = this.$data.todos.filter(t => t.id !== todoId);
+      this.todos = this.todos.filter(t => t.id !== todoId);
     },
 
     onTextChange(event) {
-      this.$data.todoText = event.target.value;
+      this.todoText = event.target.value;
     },
 
     onToggleDone(todo) {
       const {id} = todo;
-      this.$data.todos = this.$data.todos.map(t =>
+      this.todos = this.todos.map(t =>
         t.id === id ? {...t, done: !t.done} : t
       );
     }
