@@ -4,7 +4,7 @@
     <div>
       {{uncompletedCount}} of {{todos.length}} remaining
       <button
-        onClick="{this.onArchiveCompleted}"
+        v-on:click="onArchiveCompleted"
       >Archive Completed</button>
     </div>
     <br>
@@ -14,14 +14,18 @@
         size="30"
         autofocus
         placeholder="enter new todo here"
-        :value="todoText"
-        :onChange="this.onTextChange"
+        v-model="todoText"
+        @change="onTextChange"
       >
-      <button :disabled="!todoText" :onClick="this.onAddTodo">Add</button>
+      <button :disabled="!todoText" v-on:click="onAddTodo">Add</button>
     </form>
     <ul class="unstyled">
       <li :key="todo.id" v-for="todo in todos">
-        <Todo :todo="todo" :onDeleteTodo="onDeleteTodo" :onToggleDone="onToggleDone"/>
+        <Todo
+          :todo="todo"
+          :onDeleteTodo="() => onDeleteTodo(todo.id)"
+          :onToggleDone="() => onToggleDone(todo)"
+        />
       </li>
     </ul>
   </div>
@@ -39,7 +43,6 @@ export default {
   components: {Todo},
   computed: {
     uncompletedCount() {
-      console.log('TodoList.vue uncompletedCount: entered');
       return this.$data.todos.filter(t => !t.done).length;
     }
   },
@@ -51,7 +54,9 @@ export default {
   },
   methods: {
     onAddTodo() {
-      this.$data.todos = this.$data.todos.concat(createTodo(this.todoText));
+      this.$data.todos = this.$data.todos.concat(
+        createTodo(this.$data.todoText)
+      );
       this.$data.todoText = '';
     },
 
@@ -78,6 +83,11 @@ export default {
 </script>
 
 <style scoped>
+button:disabled {
+  background-color: gray;
+  color: white;
+}
+
 ul.unstyled {
   list-style: none;
   margin-left: 0;
