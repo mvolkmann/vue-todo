@@ -1,8 +1,8 @@
 <template>
   <li>
-    <input type="checkbox" :checked="todo.done" v-on:change="onToggleDone">
+    <input type="checkbox" :checked="todo.done" @change="onToggleDone">
     <span :class="doneClass">{{todo.text}}</span>
-    <button v-on:click="onDeleteTodo">Delete</button>
+    <button @click="onDeleteTodo">Delete</button>
   </li>
 </template>
 

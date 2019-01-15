@@ -4,7 +4,7 @@
     <div>
       {{uncompletedCount}} of {{todos.length}} remaining
       <button
-        v-on:click="onArchiveCompleted"
+        @click="onArchiveCompleted"
       >Archive Completed</button>
     </div>
     <br>
@@ -17,7 +17,7 @@
         v-model="todoText"
         @change="onTextChange"
       >
-      <button :disabled="!todoText" v-on:click="onAddTodo">Add</button>
+      <button :disabled="!todoText" @click="onAddTodo">Add</button>
     </form>
     <ul class="unstyled">
       <li :key="todo.id" v-for="todo in todos">
