@@ -36,17 +36,19 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+$done-color: gray;
+
 button {
   margin-left: 10px;
 }
 
 li {
   margin-top: 5px;
-}
 
-.done-true {
-  color: gray;
-  text-decoration: line-through;
+  .done-true {
+    color: $done-color;
+    text-decoration: line-through;
+  }
 }
 </style>
