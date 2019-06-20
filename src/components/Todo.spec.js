@@ -24,34 +24,30 @@ describe('Todo', () => {
   });
 
   test('should handle Delete button', () => {
-    let called = false;
+    const onDeleteTodo = jest.fn();
     const wrapper = shallowMount(Todo, {
       propsData: {
-        onDeleteTodo() {
-          called = true;
-        },
+        onDeleteTodo,
         onToggleDone() {},
         todo
       }
     });
     const deleteBtn = wrapper.find('button');
     deleteBtn.trigger('click');
-    expect(called).toBe(true);
+    expect(onDeleteTodo).toHaveBeenCalled();
   });
 
   test('should toggle done', () => {
-    let called = false;
+    const onToggleDone = jest.fn();
     const wrapper = shallowMount(Todo, {
       propsData: {
         onDeleteTodo() {},
-        onToggleDone() {
-          called = true;
-        },
+        onToggleDone,
         todo
       }
     });
     const checkbox = wrapper.find('input[type="checkbox"]');
     checkbox.trigger('click');
-    expect(called).toBe(true);
+    expect(onToggleDone).toHaveBeenCalled();
   });
 });
