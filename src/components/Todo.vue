@@ -2,12 +2,11 @@
   <li>
     <input type="checkbox" :checked="todo.done" @change="onToggleDone">
     <span :class="doneClass">{{todo.text}}</span>
-    <button @click="onDeleteTodo">Delete</button>
+    <button class="delete-btn" @click="onDeleteTodo">Delete</button>
   </li>
 </template>
 
 <script>
-/* eslint-disable no-console */
 export default {
   name: 'Todo',
   props: {
@@ -36,7 +35,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 $done-color: gray;
 
 button {
@@ -45,10 +44,10 @@ button {
 
 li {
   margin-top: 5px;
+}
 
-  .done-true {
-    color: $done-color;
-    text-decoration: line-through;
-  }
+.done-true {
+  color: $done-color;
+  text-decoration: line-through;
 }
 </style>

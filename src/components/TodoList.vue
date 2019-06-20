@@ -4,12 +4,13 @@
     <div>
       {{uncompletedCount}} of {{todos.length}} remaining
       <button
+        class="archive-btn"
         @click="onArchiveCompleted"
       >Archive Completed</button>
     </div>
-    <br>
     <form @submit.prevent>
       <input
+        class="todo-input"
         type="text"
         size="30"
         autofocus
@@ -17,22 +18,20 @@
         v-model="todoText"
         @change="onTextChange"
       >
-      <button :disabled="!todoText" @click="onAddTodo">Add</button>
+      <button class="add-btn" :disabled="!todoText" @click="onAddTodo">Add</button>
     </form>
     <ul class="unstyled">
-      <li :key="todo.id" v-for="todo in todos">
-        <Todo
-          :todo="todo"
-          :onDeleteTodo="() => onDeleteTodo(todo.id)"
-          :onToggleDone="() => onToggleDone(todo)"
-        />
-      </li>
+      <Todo v-for="todo in todos"
+        :key="todo.id"
+        :todo="todo"
+        :onDeleteTodo="() => onDeleteTodo(todo.id)"
+        :onToggleDone="() => onToggleDone(todo)"
+      />
     </ul>
   </div>
 </template>
 
 <script>
-/* eslint-disable no-console */
 import Todo from './Todo.vue';
 
 let lastId = 0;
