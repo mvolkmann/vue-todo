@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <TodoList/>
-    <GreetingJsx name="Mark"/>
+    <TodoList />
+    <GreetingJsx name="Mark" />
   </div>
 </template>
 
