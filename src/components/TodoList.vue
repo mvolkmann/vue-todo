@@ -83,6 +83,11 @@ export default {
 button:disabled {
   background-color: gray;
   color: white;
+  margin-left: 10px;
+}
+
+input {
+  margin-top: 10px;
 }
 
 ul.unstyled {

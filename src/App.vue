@@ -23,4 +23,10 @@ export default {
   font-family: sans-serif;
   padding-left: 10px;
 }
+
+button, input {
+  border: solid lightgray 1px;
+  border-radius: 4px;
+  padding: 4px;
+}
 </style>

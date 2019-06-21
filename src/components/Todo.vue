@@ -36,18 +36,22 @@ export default {
 </script>
 
 <style scoped>
-$done-color: gray;
-
 button {
   margin-left: 10px;
 }
 
-li {
-  margin-top: 5px;
+.done-true {
+  color: gray;
+  text-decoration: line-through;
 }
 
-.done-true {
-  color: $done-color;
-  text-decoration: line-through;
+li {
+  align-items: center;
+  display: flex;
+  margin-top: 10px;
+}
+
+li > span {
+  margin-left: 10px;
 }
 </style>
